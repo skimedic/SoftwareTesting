@@ -30,7 +30,7 @@ public class UserInterfaceTests
         // Search Playwright
         await page.FillAsync("[aria-label=\"Search\"]", "Playwright");
         // Press Enter
-        await page.RunAndWaitForNavigationAsync(async () => await page.PressAsync("[aria-label=\"Search\"]", "Enter"));
+        var response = await page.RunAndWaitForNavigationAsync(async () => await page.PressAsync("[aria-label=\"Search\"]", "Enter"));
         //Click on the first search option
         await page.ClickAsync("xpath=//h3[contains(text(),'Playwright: Fast and reliable end-to-end testing')]");
         //Verify Page URL
