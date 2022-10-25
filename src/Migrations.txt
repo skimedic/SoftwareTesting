@@ -1,0 +1,12 @@
+dotnet tool uninstall --global dotnet-ef 
+dotnet tool install --global dotnet-ef --prerelease
+dotnet tool update --global dotnet-ef --prerelease
+dotnet ef database drop -f
+
+dotnet ef migrations remove
+
+dotnet ef migrations add Initial -o EfStructures\Migrations -c DALSample.EfStructures.ApplicationDbContext
+dotnet ef database update Initial -c DALSample.EfStructures.ApplicationDbContext
+
+dotnet ef migrations remove
+
