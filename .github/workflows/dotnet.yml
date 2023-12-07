@@ -23,6 +23,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ./src/SoftwareTesting.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build ./src/PlaywrightTests/PlaywrightTests.csproj --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test ./src/PlaywrightTests/PlaywrightTests.csproj --no-build --verbosity normal
