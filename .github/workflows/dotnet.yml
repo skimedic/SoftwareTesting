@@ -23,4 +23,4 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ./src/SoftwareTesting.sln
     - name: Test
-      run: dotnet test ./src/PlaywrightTests/UserInterfaceTests.cs --no-build --verbosity normal
+      run: dotnet test PlaywrightTests/UserInterfaceTests.cs --no-build --verbosity normal
