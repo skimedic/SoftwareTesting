@@ -7,15 +7,14 @@
 
 namespace PlaywrightTests;
 
-public class UserInterfaceTests
+public class UserInterfaceTests 
 {
     //https://medium.com/version-1/playwright-a-modern-end-to-end-testing-for-web-app-with-c-language-support-c55e931273ee#:~
     [Fact]
     public static async Task VerifyGoogleSearchForPlaywright()
     {
         using IPlaywright playwright = await Playwright.CreateAsync();
-        await using var browser =
-            await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions() { Headless = false, SlowMo = 50 });
+        await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions() { Headless = false, SlowMo = 50 });
 
         IBrowserContext context = await browser.NewContextAsync();
 
