@@ -20,24 +20,30 @@ public class UserInterfaceTests
         IBrowserContext context = await browser.NewContextAsync();
 
         IPage page = await context.NewPageAsync();
-        //Navigate to Google.com
-        await page.GotoAsync("https://www.google.com");
-        IReadOnlyList<IFrame> f = page.Frames;
-        if (f.Count > 1)
-        {
-            await f[1].ClickAsync("text=No thanks");
-        }
-        // Search Playwright
-        await page.FillAsync("[aria-label=\"Search\"]", "Playwright");
-        // Press Enter
-        var response = await page.RunAndWaitForNavigationAsync(async () => await page.PressAsync("[aria-label=\"Search\"]", "Enter"));
-        //Click on the first search option
-        await page.ClickAsync("xpath=//h3[contains(text(),'Playwright: Fast and reliable end-to-end testing')]");
-        //Verify Page URL
-        Assert.Equal("https://playwright.dev/", page.Url);
-        // Click text=Get started
-        await page.ClickAsync("text=Get Started");
-        //Verify Page URL
-        Assert.Equal("https://playwright.dev/docs/intro", page.Url);
+        // Navigate to letsusedata.com
+        await page.GotoAsync("https://www.letsusedata.com/");
+        
+        // Fill in the login credentials for Test1
+        await page.FillAsync("#txtUser", "Test1");
+        await page.FillAsync("#txtPassword", "12345678");
+    
+        // Click on the login button
+        await page.ClickAsync("#javascriptLogin");
+        
+        // Verify that the user is logged in successfully
+        Assert.Equal("https://www.letsusedata.com/CourseSelection.html", page.Url);
+    
+        // Optionally, we can navigate back to the login page or start a new page for the next test user
+        await page.GotoAsync("https://www.letsusedata.com/");
+    
+        // Fill in the login credentials for Test2
+        await page.FillAsync("#txtUser", "Test2");
+        await page.FillAsync("#txtPassword", "iF3sBF7c");
+    
+        // Click on the login button
+        await page.ClickAsync("#javascriptLogin");
+        
+        // Verify that the user is logged in successfully
+        Assert.Equal("https://www.letsusedata.com/CourseSelection.html", page.Url);
     }
 }
